@@ -1,0 +1,7 @@
+## Interface: 100207
+## Title: Big Yeet
+## Notes: My personal addon with some meme features.
+## Author: YeetlePrime
+## Version: 0.0.1 
+## SavedVariables: BigYeetConfig
+BigYeet.lua
