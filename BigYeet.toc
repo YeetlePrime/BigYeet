@@ -4,4 +4,5 @@
 ## Author: YeetlePrime
 ## Version: 0.0.1 
 ## SavedVariables: BigYeetConfig
-BigYeet.lua
+Configuration.lua
+Bloodlust.lua
