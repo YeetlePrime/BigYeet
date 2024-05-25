@@ -1,2 +1,5 @@
 # BigYeet
-All purpose WoW Addon for my personal use
+WoW Addon with some Meme features.
+
+### Features  
+#### Music when affected by Bloodlust
