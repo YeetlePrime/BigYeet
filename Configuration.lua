@@ -1,8 +1,7 @@
 BigYeet = {
     playerGUID = UnitGUID('player'),
     filepath = 'interface\\addons\\bigyeet\\sounds\\',
-    isCurrentlyPlaying = false,
-    currentSpellId = 0,
+    currentSpellId = nil,
     soundHandle = 0,
     auraIds = {80353, 32182, 2825, 264667, 146555, 178207, 256740, 230935, 309658, 350249, 368245, 390386, 381301, 386540, 441076},
     soundChannels = {
@@ -101,7 +100,7 @@ local function createSettingsFrame()
         end
     )
 
-InterfaceOptions_AddCategory(panel)
+    InterfaceOptions_AddCategory(panel)
 
 end
 

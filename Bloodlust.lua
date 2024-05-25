@@ -1,6 +1,5 @@
 function StopSong()
-    BigYeet.isCurrentlyPlaying = false
-    BigYeet.currentSpellId = 0
+    BigYeet.currentSpellId = nil 
     StopSound(BigYeet.soundHandle)
 end
 
@@ -10,13 +9,14 @@ function PlaySong(auraId)
     if BigYeetConfig.isMuted then
         StopSong()
         return
-    elseif BigYeet.isCurrentlyPlaying then
+    elseif C_Sound.IsPlaying(BigYeet.soundHandle) then
         return
     end
 
-    BigYeet.isCurrentlyPlaying, BigYeet.soundHandle = PlaySoundFile(songFilePath, BigYeet.soundChannels[BigYeetConfig.soundChannel].identifier)
+    local success
+    success, BigYeet.soundHandle = PlaySoundFile(songFilePath, BigYeet.soundChannels[BigYeetConfig.soundChannel].identifier)
 
-    if BigYeet.isCurrentlyPlaying then
+    if success then
         BigYeet.currentSpellId = auraId
     else
         StopSong()

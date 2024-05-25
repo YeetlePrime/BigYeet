@@ -2,7 +2,7 @@
 path=$(dirname $0)
 
 includedFiles="
-    BigYeet.toc
+    *.toc
     *.lua
     sounds
     LICENSE
