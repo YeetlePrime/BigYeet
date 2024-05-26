@@ -4,8 +4,6 @@ function StopSong()
 end
 
 function PlaySong(auraId)
-    local songFilePath = BigYeet.filepath .. 'PedroTrimmed.ogg' 
-
     if BigYeetConfig.isMuted then
         StopSong()
         return
@@ -14,7 +12,7 @@ function PlaySong(auraId)
     end
 
     local success
-    success, BigYeet.soundHandle = PlaySoundFile(songFilePath, BigYeet.soundChannels[BigYeetConfig.soundChannel].identifier)
+    success, BigYeet.soundHandle = PlaySoundFile(BigYeet.soundFile, BigYeet.soundChannels[BigYeetConfig.soundChannel].identifier)
 
     if success then
         BigYeet.currentSpellId = auraId
