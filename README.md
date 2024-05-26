@@ -6,4 +6,4 @@ BigYeet provides meme features to make your WoW experience joyful.
 
 ### Quickstart
 The addon should work instantly after installation.  
-You can change some Settings at `Settings -&gt; AddOns -&gt; BigYeet`.  
+You can change some Settings at `Settings -> AddOns -> BigYeet`.  
