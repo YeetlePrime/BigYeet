@@ -1,5 +1,9 @@
-# BigYeet
-WoW Addon with some Meme features.
+## BigYeet
+BigYeet provides meme features to make your WoW experience joyful.
 
-### Features  
-#### Music when affected by Bloodlust
+### Features
+- background meme music when effected by bloodlust (or similar effect)
+
+### Quickstart
+The addon should work instantly after installation.  
+You can change some Settings at `Settings -&gt; AddOns -&gt; BigYeet`.  
