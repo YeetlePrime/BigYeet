@@ -2,7 +2,6 @@
 path=$(dirname $0)
 
 includedFiles="
-    *.toc
     *.lua
     sounds
     LICENSE
@@ -10,4 +9,5 @@ includedFiles="
 tempPath="${path}/bundled"
 mkdir $tempPath
 cp -rf $includedFiles $tempPath
+cp -rf "BigYeet.toc" "${tempPath}/bundled.toc"
 zip -rm "${path}/BigYeet.zip" "$tempPath"
