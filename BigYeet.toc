@@ -1,8 +1,8 @@
-## Interface: 100207
+## Interface: 110002
 ## Title: BigYeet
 ## Notes: My personal addon with some meme features.
 ## Author: YeetlePrime
-## Version: 0.0.1 
+## Version: 0.0.2
 ## SavedVariables: BigYeetConfig
 Configuration.lua
 Bloodlust.lua
