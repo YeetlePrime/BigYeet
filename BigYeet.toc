@@ -2,7 +2,7 @@
 ## Title: BigYeet
 ## Notes: My personal addon with some meme features.
 ## Author: YeetlePrime
-## Version: 0.0.2
+## Version: 0.0.3
 ## SavedVariables: BigYeetConfig
 Configuration.lua
 Bloodlust.lua
