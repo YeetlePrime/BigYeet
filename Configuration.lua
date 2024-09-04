@@ -60,44 +60,44 @@ BigYeet = {
 }
 
 local function deepcopy(orig, copies)
-    copies = copies or {}
-    local orig_type = type(orig)
-    local copy
-    if orig_type == 'table' then
-        if copies[orig] then
-            copy = copies[orig]
-        else
-            copy = {}
-            copies[orig] = copy
-            for orig_key, orig_value in next, orig, nil do
-                copy[deepcopy(orig_key, copies)] = deepcopy(orig_value, copies)
-            end
-            setmetatable(copy, deepcopy(getmetatable(orig), copies))
-        end
-    else -- number, string, boolean, etc
-        copy = orig
-    end
-    return copy
+	copies = copies or {}
+	local orig_type = type(orig)
+	local copy
+	if orig_type == "table" then
+		if copies[orig] then
+			copy = copies[orig]
+		else
+			copy = {}
+			copies[orig] = copy
+			for orig_key, orig_value in next, orig, nil do
+				copy[deepcopy(orig_key, copies)] = deepcopy(orig_value, copies)
+			end
+			setmetatable(copy, deepcopy(getmetatable(orig), copies))
+		end
+	else -- number, string, boolean, etc
+		copy = orig
+	end
+	return copy
 end
 
 local function createSettingsFrame()
 	local panel = CreateFrame("Frame")
 	panel.name = "BigYeet"
-	InterfaceOptions_AddCategory(panel)
+	local category, _ = Settings.RegisterCanvasLayoutCategory(panel, panel.name)
+	category.ID = panel.name
+	Settings.RegisterAddOnCategory(category)
 
 	local mutedCheckbox = CreateFrame("CheckButton", nil, panel, "InterfaceOptionsCheckButtonTemplate")
 	mutedCheckbox:SetPoint("TOPLEFT", 20, -20)
 	mutedCheckbox.Text:SetText("Muted")
 	mutedCheckbox:SetChecked(BigYeetConfig.isMuted)
-	mutedCheckbox:SetScript("OnClick", 
-		function(self, btn, down)
-			BigYeetConfig.isMuted = mutedCheckbox:GetChecked()
+	mutedCheckbox:SetScript("OnClick", function(self, btn, down)
+		BigYeetConfig.isMuted = mutedCheckbox:GetChecked()
 
-			if BigYeetConfig.isMuted then
-				StopSong()
-			end
+		if BigYeetConfig.isMuted then
+			StopSong()
 		end
-	)
+	end)
 
 	local soundChannelDropdown = CreateFrame("Frame", "SoundChannelDropdown", panel, "UIDropDownMenuTemplate")
 	soundChannelDropdown:SetPoint("TOPRIGHT", panel, 20, -20)
