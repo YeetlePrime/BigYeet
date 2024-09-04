@@ -1,0 +1,4 @@
+package-as: BigYeet
+ignore:
+  - bundle.sh
+  - BigYeet.zip
