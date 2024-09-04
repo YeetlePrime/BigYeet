@@ -1,8 +1,9 @@
 # BigYeet Changelog
 
-## v0.0.3
+## v0.1.0
 
 - Changed AddOn Icon
+- Changed the layout of the changelog
 
 ## v0.0.2
 
