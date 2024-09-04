@@ -1,6 +1,6 @@
 ## Interface: 110002
 ## Title: BigYeet
-## Notes: My personal addon with some meme features.
+## Notes: Enhance your bloodlust feeling with some music.
 ## Author: YeetlePrime
 ## Version: 0.0.3
 ## SavedVariables: BigYeetConfig
