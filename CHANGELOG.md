@@ -2,6 +2,8 @@
 
 ## v0.0.3
 
+- Changed AddOn Icon
+
 ## v0.0.2
 
 - Support for WoW Retail 11.0.2 was added

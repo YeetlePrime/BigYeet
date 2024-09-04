@@ -1,4 +1,4 @@
-# <img src="icon.jpg" alt="Icon" style="width:32px;height:32px;"> BigYeet
+# <img src="pedro.png" alt="Icon" style="width:32px;height:32px;"> BigYeet
 BigYeet provides meme features to make your WoW experience joyful.
 
 ## Features
