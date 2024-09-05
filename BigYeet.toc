@@ -5,7 +5,7 @@
 ## Author: YeetlePrime
 ## Version: 0.2.0
 ## SavedVariables: BigYeetConfig
-Utils.lua
-Globals.lua
-Configuration.lua
-Bloodlust.lua
+src/Utils.lua
+src/Globals.lua
+src/Configuration.lua
+src/Bloodlust.lua

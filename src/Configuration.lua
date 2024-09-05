@@ -45,7 +45,7 @@ local function createSettingsFrame()
 	soundChannelDropdown:SetupMenu(function(dropdown, rootDescription)
 		rootDescription:CreateTitle("Soundchannel")
 		for index, soundChannel in ipairs(BigYeet.soundChannels) do
-			rootDescription:CreateRadio(soundChannel.name, isSelectedSoundChannel, setSelectedSoundChannel, index)
+			rootDescription:CreateCheckbox(soundChannel.name, isSelectedSoundChannel, setSelectedSoundChannel, index)
 		end
 	end)
 
