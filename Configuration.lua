@@ -30,29 +30,27 @@ local function createSettingsFrame()
 		end
 	end)
 
-	local soundChannelDropdown = CreateFrame("Frame", "SoundChannelDropdown", panel, "UIDropDownMenuTemplate")
-	soundChannelDropdown:SetPoint("TOPRIGHT", panel, 20, -20)
-	soundChannelDropdown:SetWidth(200)
-	UIDropDownMenu_SetText(soundChannelDropdown, BigYeet.soundChannels[BigYeetConfig.soundChannel].name)
-	UIDropDownMenu_Initialize(soundChannelDropdown, function(self, level, menuList)
-		local info = UIDropDownMenu_CreateInfo()
-		if (level or 1) == 1 then
-			for index, soundChannel in ipairs(BigYeet.soundChannels) do
-				info.text = soundChannel.name
-				info.func = self.SetValue
-				info.arg1, info.checked = index, index == BigYeetConfig.soundChannel
-				UIDropDownMenu_AddButton(info)
-			end
-		end
-	end)
-	function soundChannelDropdown:SetValue(newValue)
-		BigYeetConfig.soundChannel = newValue
-		UIDropDownMenu_SetText(soundChannelDropdown, BigYeet.soundChannels[BigYeetConfig.soundChannel].name)
-		CloseDropDownMenus()
+	local function isSelectedSoundChannel(index)
+		return BigYeetConfig.soundChannel == index
+	end
+	local function setSelectedSoundChannel(index)
+		BigYeetConfig.soundChannel = index
 	end
 
+	local soundChannelDropdown =
+		CreateFrame("DropdownButton", "SoundChannelDropdown", panel, "WoWStyle1DropdownTemplate")
+	soundChannelDropdown:SetDefaultText(BigYeet.soundChannels[BigYeetConfig.soundChannel].name)
+	soundChannelDropdown:SetPoint("TOPRIGHT", panel, -20, -20)
+	soundChannelDropdown:SetWidth(200)
+	soundChannelDropdown:SetupMenu(function(dropdown, rootDescription)
+		rootDescription:CreateTitle("Soundchannel")
+		for index, soundChannel in ipairs(BigYeet.soundChannels) do
+			rootDescription:CreateRadio(soundChannel.name, isSelectedSoundChannel, setSelectedSoundChannel, index)
+		end
+	end)
+
 	local soundChannelDropdownLabel = panel:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
-	soundChannelDropdownLabel:SetPoint("RIGHT", soundChannelDropdown, "LEFT", 10, 0)
+	soundChannelDropdownLabel:SetPoint("RIGHT", soundChannelDropdown, "LEFT", -10, 0)
 	soundChannelDropdownLabel:SetNonSpaceWrap(true)
 	soundChannelDropdownLabel:SetText("Sound Channel:")
 
