@@ -1,8 +1,11 @@
 ## Interface: 110002
 ## Title: BigYeet
+## IconTexture: Interface/Addons/BigYeet/pedro.png
 ## Notes: Enhance your bloodlust feeling with some music.
 ## Author: YeetlePrime
-## Version: 0.1.0
+## Version: 0.2.0
 ## SavedVariables: BigYeetConfig
+Utils.lua
+Globals.lua
 Configuration.lua
 Bloodlust.lua

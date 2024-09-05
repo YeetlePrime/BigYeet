@@ -1,3 +1,11 @@
+local UnitGUID, CreateFrame, Settings = UnitGUID, CreateFrame, Settings
+local UIDropDownMenu_SetText, UIDropDownMenu_Initialize, UIDropDownMenu_CreateInfo, UIDropDownMenu_AddButton, CloseDropDownMenus =
+	UIDropDownMenu_SetText,
+	UIDropDownMenu_Initialize,
+	UIDropDownMenu_CreateInfo,
+	UIDropDownMenu_AddButton,
+	CloseDropDownMenus
+
 local bigYeetDefaultConfig = {
 	isMuted = false,
 	soundChannel = 1,
@@ -91,7 +99,7 @@ local function createSettingsFrame()
 	mutedCheckbox:SetPoint("TOPLEFT", 20, -20)
 	mutedCheckbox.Text:SetText("Muted")
 	mutedCheckbox:SetChecked(BigYeetConfig.isMuted)
-	mutedCheckbox:SetScript("OnClick", function(self, btn, down)
+	mutedCheckbox:SetScript("OnClick", function(_, _, _)
 		BigYeetConfig.isMuted = mutedCheckbox:GetChecked()
 
 		if BigYeetConfig.isMuted then
@@ -159,6 +167,12 @@ local function loadConfig(self, event, addonName)
 	end
 
 	createSettingsFrame()
+
+	if SoundFileExists(BigYeet.soundFile) then
+		print("EXISTS")
+	else
+		print("DOES NOT EXIST")
+	end
 
 	print("BigYeet: Addon Loaded")
 end
