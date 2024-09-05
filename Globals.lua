@@ -22,6 +22,15 @@ BigYeet = {
 		386540,
 		441076,
 	},
+	isBloodLustAuraId = function(auraId)
+		for _, id in ipairs(BigYeet.auraIds) do
+			if id == auraId then
+				return true
+			end
+		end
+
+		return false
+	end,
 	soundChannels = {
 		{
 			identifier = "master",
