@@ -2,6 +2,8 @@
 
 ## v0.2.0
 
+- Add icon to AddOn list menu
+
 ## v0.1.0
 
 - Changed AddOn Icon
