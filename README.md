@@ -1,4 +1,4 @@
-# <img src="icon_round.png" alt="Icon" style="width:32px;height:32px;"> BigYeet
+# <img src="resources/icon_round.png" alt="Icon" style="width:32px;height:32px;"> BigYeet
 
 **BigYeet** is a lightweight World of Warcraft addon that enhances your
 gaming experience by playing a meme song ("Pedro") whenever

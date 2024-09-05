@@ -1,6 +1,6 @@
 ## Interface: 110002
 ## Title: BigYeet
-## IconTexture: Interface/Addons/BigYeet/icon_round.png
+## IconTexture: Interface/Addons/BigYeet/resources/icon_round.png
 ## Notes: Enhance your bloodlust feeling with some music.
 ## Author: YeetlePrime
 ## Version: 0.2.0
