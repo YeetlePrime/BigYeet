@@ -1,4 +1,4 @@
-local UnitGUID, CreateFrame, Settings = UnitGUID, CreateFrame, Settings
+local CreateFrame, Settings = CreateFrame, Settings
 local UIDropDownMenu_SetText, UIDropDownMenu_Initialize, UIDropDownMenu_CreateInfo, UIDropDownMenu_AddButton, CloseDropDownMenus =
 	UIDropDownMenu_SetText,
 	UIDropDownMenu_Initialize,
@@ -10,83 +10,6 @@ local bigYeetDefaultConfig = {
 	isMuted = false,
 	soundChannel = 1,
 }
-
-BigYeet = {
-	playerGUID = UnitGUID("player"),
-	soundFile = "interface\\addons\\bigyeet\\sounds\\PedroTrimmed.ogg",
-	currentSpellId = nil,
-	soundHandle = 0,
-	auraIds = {
-		80353,
-		32182,
-		2825,
-		264667,
-		146555,
-		178207,
-		256740,
-		230935,
-		309658,
-		350249,
-		368245,
-		390386,
-		381301,
-		386540,
-		441076,
-	},
-	soundChannels = {
-		{
-			identifier = "master",
-			name = "Master",
-			volume = "Sound_MasterVolume",
-			enable = "Sound_EnableAllSound",
-		},
-		{
-			identifier = "sfx",
-			name = "SFX",
-			volume = "Sound_SFXVolume",
-			enable = "Sound_EnableSFX",
-		},
-		{
-			identifier = "music",
-			name = "Music",
-			volume = "Sound_MusicVolume",
-			enable = "Sound_EnableMusic",
-		},
-		{
-			identifier = "ambience",
-			name = "Ambience",
-			volume = "Sound_AmbienceVolume",
-			enable = "Sound_EnableAmbience",
-		},
-		{
-			identifier = "dialog",
-			name = "Dialog",
-			volume = "Sound_DialogVolume",
-			enable = "Sound_EnableDialog",
-		},
-	},
-}
-
-local function deepcopy(orig, copies)
-	copies = copies or {}
-	local orig_type = type(orig)
-	local copy
-	if orig_type == "table" then
-		if copies[orig] then
-			copy = copies[orig]
-		else
-			copy = {}
-			copies[orig] = copy
-			for orig_key, orig_value in next, orig, nil do
-				copy[deepcopy(orig_key, copies)] = deepcopy(orig_value, copies)
-			end
-			setmetatable(copy, deepcopy(getmetatable(orig), copies))
-		end
-	else -- number, string, boolean, etc
-		copy = orig
-	end
-	return copy
-end
 
 local function createSettingsFrame()
 	local panel = CreateFrame("Frame")
@@ -150,29 +73,23 @@ local function createSettingsFrame()
 	end)
 end
 
-local function loadConfig(self, event, addonName)
+local function loadConfig(_, _, addonName)
 	if addonName ~= "BigYeet" then
 		return
 	end
 
 	if type(BigYeetConfig) == "table" then
-		local config = deepcopy(bigYeetDefaultConfig)
+		local config = Deepcopy(bigYeetDefaultConfig)
 		for defaultKey, defaultValue in pairs(config) do
 			config[defaultKey] = BigYeetConfig[defaultKey] and BigYeetConfig[defaultKey] or defaultValue
 		end
 
 		BigYeetConfig = config
 	else
-		BigYeetConfig = deepcopy(bigYeetDefaultConfig)
+		BigYeetConfig = Deepcopy(bigYeetDefaultConfig)
 	end
 
 	createSettingsFrame()
-
-	if SoundFileExists(BigYeet.soundFile) then
-		print("EXISTS")
-	else
-		print("DOES NOT EXIST")
-	end
 
 	print("BigYeet: Addon Loaded")
 end
