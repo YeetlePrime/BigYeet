@@ -2,7 +2,7 @@ local UnitGUID = UnitGUID
 
 BigYeet = {
 	playerGUID = UnitGUID("player"),
-	soundFile = "interface/addons/bigyeet/sounds/pedro.ogg",
+	soundFile = "interface\\addons\\bigyeet\\sounds\\pedro.ogg",
 	currentSpellId = nil,
 	soundHandle = 0,
 	auraIds = {
