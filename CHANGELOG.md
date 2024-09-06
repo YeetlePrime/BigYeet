@@ -3,6 +3,7 @@
 ## v0.2.0
 
 - Add icon to AddOn list menu
+- Changed the layout of the settings panel
 
 ## v0.1.0
 
