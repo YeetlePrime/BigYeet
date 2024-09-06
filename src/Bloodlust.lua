@@ -16,7 +16,7 @@ function PlaySong(auraId)
 
 	local success
 	success, BigYeet.soundHandle =
-		PlaySoundFile(BigYeet.soundFile, BigYeet.soundChannels[BigYeetConfig.soundChannel].identifier)
+		PlaySoundFile(BigYeetConfig.selectedSong, BigYeet.soundChannels[BigYeetConfig.soundChannel].identifier)
 
 	if success then
 		BigYeet.currentSpellId = auraId

@@ -2,9 +2,20 @@
 
 ## v0.3.0
 
+- Added support for custom sound files
+
+To add a custom sound file:
+
+1. Add a sound file (`mp3` or `ogg` format) to `World of Warcraft\__retail__\Interface\AddOns\BigYeet\customsounds`
+2. Restart WoW, if it was running while adding the sound file
+3. Navigate to the BigYeet Settings
+4. Enter the filename (without extension and path) to the input field
+5. Press `Add Song`
+6. Optionally Select the added song in the `Selected Song` Dropdown
+
 ## v0.2.0
 
-- Add icon to AddOn list menu
+- Added icon to AddOn list menu
 - Changed the layout of the settings panel
 
 ## v0.1.0
