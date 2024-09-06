@@ -3,7 +3,7 @@
 ## IconTexture: Interface/Addons/BigYeet/resources/icon_round.png
 ## Notes: Enhance your bloodlust feeling with some music.
 ## Author: YeetlePrime
-## Version: 0.2.0
+## Version: 0.3.0
 ## SavedVariables: BigYeetConfig
 src/Utils.lua
 src/Globals.lua

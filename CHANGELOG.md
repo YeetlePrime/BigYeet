@@ -1,5 +1,7 @@
 # BigYeet Changelog
 
+## v0.3.0
+
 ## v0.2.0
 
 - Add icon to AddOn list menu
