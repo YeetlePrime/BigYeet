@@ -170,7 +170,7 @@ function SettingsPanel:addSongSelectionToLastRow()
 	local function populateDropdown()
 		checkboxPool = {}
 		dropdown:SetupMenu(function(_, rootDescription)
-			for path, name in pairs(BigYeetConfig.songs) do
+			for path, name in pairs(BigYeet.availableSongs) do
 				local checkbox = rootDescription:CreateCheckbox(name, isSelectedSong, setSelectedSong, path)
 
 				table.insert(checkboxPool, checkbox)
@@ -295,6 +295,27 @@ local function removeInvalidSongs()
 	end
 end
 
+local function populateAvailableSongs()
+	BigYeet.availableSongs = {}
+	BigYeet.songsToPlay = {}
+
+	for path, title in pairs(BigYeetConfig.songs) do
+		if SoundFileExists(path) then
+			BigYeet.availableSongs[path] = title
+			if string.lower(path) == string.lower(BigYeetConfig.selectedSong) then
+				table.insert(BigYeet.songsToPlay, path)
+			end
+		end
+	end
+
+	if next(BigYeet.songsToPlay) == nil then
+		for path, _ in pairs(BigYeet.availableSongs) do
+			table.insert(BigYeet.songsToPlay, path)
+			break
+		end
+	end
+end
+
 local function loadConfig(_, _, addonName)
 	if addonName ~= "BigYeet" then
 		return
@@ -311,7 +332,7 @@ local function loadConfig(_, _, addonName)
 		BigYeetConfig = Deepcopy(bigYeetDefaultConfig)
 	end
 
-	removeInvalidSongs()
+	populateAvailableSongs()
 	createSettingsFrame()
 
 	print("BigYeet: Addon Loaded")

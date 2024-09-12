@@ -1,6 +1,8 @@
 local UnitGUID = UnitGUID
 
 BigYeet = {
+	songsToPlay = {},
+	availableSongs = {},
 	playerGUID = UnitGUID("player"),
 	customSongBasePath = "Interface\\AddOns\\BigYeet\\customsounds\\",
 	currentSpellId = nil,

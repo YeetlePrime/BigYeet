@@ -1,5 +1,5 @@
-local StopSound, C_Sound, PlaySoundFile, CreateFrame, CombatLogGetCurrentEventInfo =
-	StopSound, C_Sound, PlaySoundFile, CreateFrame, CombatLogGetCurrentEventInfo
+local StopSound, C_Sound, PlaySoundFile, CreateFrame, CombatLogGetCurrentEventInfo, random =
+	StopSound, C_Sound, PlaySoundFile, CreateFrame, CombatLogGetCurrentEventInfo, random
 
 function StopSong()
 	BigYeet.currentSpellId = nil
@@ -10,14 +10,17 @@ function PlaySong(auraId)
 	if BigYeetConfig.isMuted then
 		StopSong()
 		return
+	elseif next(BigYeet.songsToPlay) == nil then
+		StopSong()
+		return
 	elseif C_Sound.IsPlaying(BigYeet.soundHandle) then
 		return
 	end
 
 	local success
+	local songToPlay = BigYeet.songsToPlay[random(#BigYeet.songsToPlay)]
 	success, BigYeet.soundHandle =
-		PlaySoundFile(BigYeetConfig.selectedSong, BigYeet.soundChannels[BigYeetConfig.soundChannel].identifier)
-
+		PlaySoundFile(songToPlay, BigYeet.soundChannels[BigYeetConfig.soundChannel].identifier)
 	if success then
 		BigYeet.currentSpellId = auraId
 	else

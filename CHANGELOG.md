@@ -1,5 +1,9 @@
 # BigYeet Changelog
 
+## v0.3.1
+
+- Bump supported version to 11.0.5
+
 ## v0.3.0
 
 - Added support for custom sound files
