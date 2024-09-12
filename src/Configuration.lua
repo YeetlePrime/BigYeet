@@ -4,10 +4,11 @@ local bigYeetDefaultConfig = {
 	isMuted = false,
 	soundChannel = 1,
 	songs = {},
-	selectedSong = "interface\\addons\\bigyeet\\sounds\\pedro.ogg",
+	selectedSongs = {},
 }
 bigYeetDefaultConfig.songs["interface\\addons\\bigyeet\\sounds\\pedro.ogg"] = "Pedro"
 bigYeetDefaultConfig.songs["interface\\addons\\bigyeet\\sounds\\dance_till_youre_dead.ogg"] = "Dance till you're dead"
+bigYeetDefaultConfig.selectedSongs["interface\\addons\\bigyeet\\sounds\\pedro.ogg"] = true
 
 local SettingsPanel = {
 	panel = nil,
@@ -161,7 +162,7 @@ local function populateAvailableSongs()
 	for path, title in pairs(BigYeetConfig.songs) do
 		if SoundFileExists(path) then
 			BigYeet.availableSongs[path] = title
-			if string.lower(path) == string.lower(BigYeetConfig.selectedSong) then
+			if BigYeetConfig.selectedSongs[path] then
 				table.insert(BigYeet.songsToPlay, path)
 			end
 		end
@@ -179,11 +180,15 @@ function SettingsPanel:addSongSelectionToLastRow()
 	local lastRow = self.rows[#self.rows]
 
 	local function isSelectedSong(songPath)
-		return BigYeetConfig.selectedSong == songPath
+		return BigYeetConfig.selectedSongs[songPath] ~= nil
 	end
 
 	local function setSelectedSong(songPath)
-		BigYeetConfig.selectedSong = songPath
+		if BigYeetConfig.selectedSongs[songPath] then
+			BigYeetConfig.selectedSongs[songPath] = nil
+		else
+			BigYeetConfig.selectedSongs[songPath] = true
+		end
 		populateAvailableSongs()
 	end
 

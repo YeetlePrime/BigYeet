@@ -3,6 +3,7 @@
 ## v0.3.1
 
 - Bump supported version to 11.0.5
+- Allow selection of multiple songs. The played song will be picked at random.
 
 ## v0.3.0
 
