@@ -7,6 +7,7 @@ local bigYeetDefaultConfig = {
 	selectedSong = "interface\\addons\\bigyeet\\sounds\\pedro.ogg",
 }
 bigYeetDefaultConfig.songs["interface\\addons\\bigyeet\\sounds\\pedro.ogg"] = "Pedro"
+bigYeetDefaultConfig.songs["interface\\addons\\bigyeet\\sounds\\dance_till_youre_dead.ogg"] = "Dance till you're dead"
 
 local SettingsPanel = {
 	panel = nil,
@@ -153,6 +154,27 @@ function SettingsPanel:addButtonToLastRow(valuePosition, text, onClickFunction)
 	return button
 end
 
+local function populateAvailableSongs()
+	BigYeet.availableSongs = {}
+	BigYeet.songsToPlay = {}
+
+	for path, title in pairs(BigYeetConfig.songs) do
+		if SoundFileExists(path) then
+			BigYeet.availableSongs[path] = title
+			if string.lower(path) == string.lower(BigYeetConfig.selectedSong) then
+				table.insert(BigYeet.songsToPlay, path)
+			end
+		end
+	end
+
+	if next(BigYeet.songsToPlay) == nil then
+		for path, _ in pairs(BigYeet.availableSongs) do
+			table.insert(BigYeet.songsToPlay, path)
+			break
+		end
+	end
+end
+
 function SettingsPanel:addSongSelectionToLastRow()
 	local lastRow = self.rows[#self.rows]
 
@@ -162,6 +184,7 @@ function SettingsPanel:addSongSelectionToLastRow()
 
 	local function setSelectedSong(songPath)
 		BigYeetConfig.selectedSong = songPath
+		populateAvailableSongs()
 	end
 
 	local checkboxPool = {}
@@ -295,24 +318,9 @@ local function removeInvalidSongs()
 	end
 end
 
-local function populateAvailableSongs()
-	BigYeet.availableSongs = {}
-	BigYeet.songsToPlay = {}
-
-	for path, title in pairs(BigYeetConfig.songs) do
-		if SoundFileExists(path) then
-			BigYeet.availableSongs[path] = title
-			if string.lower(path) == string.lower(BigYeetConfig.selectedSong) then
-				table.insert(BigYeet.songsToPlay, path)
-			end
-		end
-	end
-
-	if next(BigYeet.songsToPlay) == nil then
-		for path, _ in pairs(BigYeet.availableSongs) do
-			table.insert(BigYeet.songsToPlay, path)
-			break
-		end
+local function addDefaultSongsToConfig()
+	for path, title in pairs(bigYeetDefaultConfig.songs) do
+		BigYeetConfig.songs[path] = title
 	end
 end
 
@@ -332,6 +340,8 @@ local function loadConfig(_, _, addonName)
 		BigYeetConfig = Deepcopy(bigYeetDefaultConfig)
 	end
 
+	print(#bigYeetDefaultConfig.songs)
+	addDefaultSongsToConfig()
 	populateAvailableSongs()
 	createSettingsFrame()
 
