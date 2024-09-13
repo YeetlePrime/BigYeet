@@ -1,4 +1,4 @@
-## Interface: 110002
+## Interface: 110002, 110005
 ## Title: BigYeet
 ## IconTexture: Interface/Addons/BigYeet/resources/icon_round.png
 ## Notes: Enhance your bloodlust feeling with some music.
