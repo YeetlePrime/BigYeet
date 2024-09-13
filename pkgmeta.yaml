@@ -1,6 +1,5 @@
 package-as: BigYeet
 ignore:
-  - bundle.sh
   - BigYeet.zip
 manual-changelog:
   filename: CHANGELOG.md
