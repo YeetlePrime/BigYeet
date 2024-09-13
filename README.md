@@ -59,7 +59,11 @@ or on this addon's [CurseForge page](https://www.curseforge.com/wow/addons/bigye
 ## Credits
 
 - **Author**: YeetlePrime
-- **Meme Song**: Pedro - Jaxomy, Agatino Romero, Raffaella Carrà
+- **Songs**:
+  - Pedro - Jaxomy, Agatino Romero, Raffaella Carrà
+  - Yeah Yeah Yeahs - Heads Will Roll
+  - Megalovania - Undertale
+  - Medic - Gürl
 
 ## License
 

@@ -1,9 +1,11 @@
 # BigYeet Changelog
 
-## v0.3.1
+## v0.4.0
 
 - Bump supported version to 11.0.5
-- Allow selection of multiple songs. The played song will be picked at random.
+- Added support for selection of multiple songs.
+The played song will be picked at random.
+- Added more songs to defaults.
 
 ## v0.3.0
 

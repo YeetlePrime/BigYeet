@@ -9,7 +9,7 @@ local bigYeetDefaultConfig = {
 
 local defaultSongs = {}
 defaultSongs["interface\\addons\\bigyeet\\sounds\\pedro.ogg"] = "Pedro"
-defaultSongs["interface\\addons\\bigyeet\\sounds\\dance_till_youre_dead.ogg"] = "Dance till you're dead"
+defaultSongs["interface\\addons\\bigyeet\\sounds\\yeah_yeah_yeahs.ogg"] = "Yeah Yeah Yeahs"
 defaultSongs["interface\\addons\\bigyeet\\sounds\\megalovania.ogg"] = "Megalovania"
 defaultSongs["interface\\addons\\bigyeet\\sounds\\medic.mp3"] = "Medic"
 bigYeetDefaultConfig.selectedSongs["interface\\addons\\bigyeet\\sounds\\pedro.ogg"] = true
@@ -306,7 +306,8 @@ local function createSettingsFrame()
 			return
 		end
 
-		BigYeetConfig.songs[path] = name
+		BigYeetConfig.customSongs[path] = name
+		populateAvailableSongs()
 		songSelectionRow.reload()
 	end)
 
@@ -316,24 +317,6 @@ local function createSettingsFrame()
 			.. BigYeet.customSongBasePath
 			.. '".After that you have to close WoW, so that the new file can be detected on next startup.Now you can type the name of the new file (without path or fileformat) in the input field and press the button to add the song to your selection.'
 	)
-end
-
-local function removeInvalidSongs()
-	for path, _ in pairs(BigYeetConfig.songs) do
-		if not SoundFileExists(path) then
-			BigYeetConfig.songs[path] = nil
-			if string.lower(path) == string.lower(BigYeetConfig.selectedSong) then
-				BigYeetConfig.selectedSong = nil
-			end
-		end
-	end
-
-	if BigYeetConfig.selectedSong == nil then
-		for path, _ in pairs(BigYeetConfig.songs) do
-			BigYeetConfig.selectedSong = path
-			break
-		end
-	end
 end
 
 local function loadConfig(_, _, addonName)
