@@ -3,11 +3,15 @@ local CreateFrame, Settings, C_Timer = CreateFrame, Settings, C_Timer
 local bigYeetDefaultConfig = {
 	isMuted = false,
 	soundChannel = 1,
-	songs = {},
+	customSongs = {},
 	selectedSongs = {},
 }
-bigYeetDefaultConfig.songs["interface\\addons\\bigyeet\\sounds\\pedro.ogg"] = "Pedro"
-bigYeetDefaultConfig.songs["interface\\addons\\bigyeet\\sounds\\dance_till_youre_dead.ogg"] = "Dance till you're dead"
+
+local defaultSongs = {}
+defaultSongs["interface\\addons\\bigyeet\\sounds\\pedro.ogg"] = "Pedro"
+defaultSongs["interface\\addons\\bigyeet\\sounds\\dance_till_youre_dead.ogg"] = "Dance till you're dead"
+defaultSongs["interface\\addons\\bigyeet\\sounds\\megalovania.ogg"] = "Megalovania"
+defaultSongs["interface\\addons\\bigyeet\\sounds\\medic.mp3"] = "Medic"
 bigYeetDefaultConfig.selectedSongs["interface\\addons\\bigyeet\\sounds\\pedro.ogg"] = true
 
 local SettingsPanel = {
@@ -159,7 +163,16 @@ local function populateAvailableSongs()
 	BigYeet.availableSongs = {}
 	BigYeet.songsToPlay = {}
 
-	for path, title in pairs(BigYeetConfig.songs) do
+	for path, title in pairs(defaultSongs) do
+		if SoundFileExists(path) then
+			BigYeet.availableSongs[path] = title
+			if BigYeetConfig.selectedSongs[path] then
+				table.insert(BigYeet.songsToPlay, path)
+			end
+		end
+	end
+
+	for path, title in pairs(BigYeetConfig.customSongs) do
 		if SoundFileExists(path) then
 			BigYeet.availableSongs[path] = title
 			if BigYeetConfig.selectedSongs[path] then
@@ -323,12 +336,6 @@ local function removeInvalidSongs()
 	end
 end
 
-local function addDefaultSongsToConfig()
-	for path, title in pairs(bigYeetDefaultConfig.songs) do
-		BigYeetConfig.songs[path] = title
-	end
-end
-
 local function loadConfig(_, _, addonName)
 	if addonName ~= "BigYeet" then
 		return
@@ -345,8 +352,6 @@ local function loadConfig(_, _, addonName)
 		BigYeetConfig = Deepcopy(bigYeetDefaultConfig)
 	end
 
-	print(#bigYeetDefaultConfig.songs)
-	addDefaultSongsToConfig()
 	populateAvailableSongs()
 	createSettingsFrame()
 
