@@ -8,21 +8,24 @@ BigYeet = {
 	currentSpellId = nil,
 	soundHandle = 0,
 	auraIds = {
-		80353,
-		32182,
-		2825,
-		264667,
-		146555,
-		178207,
-		256740,
-		230935,
-		309658,
-		350249,
-		368245,
-		390386,
-		381301,
-		386540,
-		441076,
+		386540, -- temporal warp
+		368245, -- resonant bloodlust
+		-- classes
+		80353, -- time warp (mage)
+		350249, -- time warp (mage)
+		32182, -- heroism (alliance shaman)
+		2825, -- bloodlust (horde shaman)
+		264667, -- primal rage (hunter)
+		390386, -- fury of the aspects (evoker)
+		-- drums
+		146555, -- drums of rage
+		178207, -- drums of fury
+		441076, -- timeless drums
+		230935, -- drums of the mountain (legion)
+		256740, -- drums of the maelstrom (battle for azeroth)
+		309658, -- drums of deathly ferocity (shadowlands)
+		381301, -- feral hide drums (dragonflight)
+		444257, -- thunderous drums (the war within)
 	},
 	isBloodLustAuraId = function(auraId)
 		for _, id in ipairs(BigYeet.auraIds) do

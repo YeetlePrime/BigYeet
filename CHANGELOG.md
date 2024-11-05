@@ -1,5 +1,9 @@
 # BigYeet Changelog
 
+## v0.5.0
+
+- Added support for the "Thunderous Drums" in TWW
+
 ## v0.4.0
 
 - Bump supported version to 11.0.5
